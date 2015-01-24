@@ -13,7 +13,8 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 ## cacheSolve is a function that calculates the inverse of the matrix previously
-## created by makeCacheMatrix
+## created by makeCacheMatrix. To avoid unecessary computational efforts, this function
+## only performs the matrix inversion calculation if the inverse matrix does not exist
 
 cacheSolve <- function(x, ...) {
     m <- getinverse()
