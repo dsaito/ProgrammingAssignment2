@@ -7,9 +7,9 @@
 
 makeCacheMatrix <- function(x = matrix()) {
     inv <<- NULL
-    getmatrix <- function() x
-    setinverse <- function(z) inv <<- z
-    getinverse <- function() inv
+    getmatrix <<- function() x
+    setinverse <<- function(z) inv <<- z
+    getinverse <<- function() inv
 }
 
 ## cacheSolve is a function that calculates the inverse of the matrix previously
@@ -17,15 +17,17 @@ makeCacheMatrix <- function(x = matrix()) {
 ## only performs the matrix inversion calculation if the inverse matrix does not exist
 
 cacheSolve <- function(x, ...) {
-    m <- getinverse()
+    m <- getmatrix()
     if(!is.null(inv)) {
         message("Cached inverse matrix:")
         print(inv)
+	return(inv)
     } else {
         data <- getmatrix()
         inv <- solve(data, ...)
         setinverse(inv)
         message("Computed inverse matrix:")
         print(inv)
+	return(inv)
     }
 }
