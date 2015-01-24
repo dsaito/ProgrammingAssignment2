@@ -21,7 +21,7 @@ cacheSolve <- function(x, ...) {
         message("Cached inverse matrix:")
         print(inv)
     } else {
-        data <- l$get()
+        data <- getmatrix()
         inv <- solve(data, ...)
         setinverse(inv)
         message("Computed inverse matrix:")
